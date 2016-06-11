@@ -39,5 +39,44 @@
 // //some code here
 // });
 
+// declare global variables
+// var calcApplication = { // set up object
+//   "First Number": firstValue,
+//   "Second Number": secondValue,
+//   "Mathematical Operation": mathOperation
+// };
 
-console.log("This is working from inside client.js");
+
+$(document).ready(function() {
+
+  $('.math').change(function() { // when a dropdown option is selected...
+
+    var firstValue = $('#firstNum').val();
+    var secondValue = $('#secondNum').val();
+    var mathOperation = $('.math option:selected').text();
+    var result;
+    var calcApplication = { // set up object
+      "First Number": Number(firstValue),
+      "Second Number": Number(secondValue),
+      "Mathematical Operation": mathOperation
+    };
+    // console.log("First Number: " + firstValue + "\nSecond Number: " + secondValue + "\nOperation: " + mathOperation);
+    // console.log(calcApplication);
+
+    $('#submit').click(function() {
+      if (mathOperation == '+') {
+        result = firstValue + secondValue;
+        console.log(result);
+      } else if (mathOperation == '-') {
+        result = firstValue - secondValue;
+        console.log(result);
+      } else if (mathOperation == '*') {
+        result = firstValue * secondValue;
+        console.log(result);
+      } else if (mathOperation == '/') {
+        result = firstValue / secondValue;
+        console.log(result);
+      } // end if else statements
+    }); // end click on submit button function
+  }); // end change function
+}); // end doc ready function

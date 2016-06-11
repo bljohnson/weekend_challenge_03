@@ -7,6 +7,18 @@
     <script src="../../client.js" charset="utf-8"></script>
   </head>
   <body>
-
+    <h1>Calculator</h1>
+    <form action = "http://localhost:3000/getPost" method = "post">
+      <input type = "number" id = "firstNum"  placeholder = "Enter a number" value = "">
+      <select class = "math">
+        <option>Select...</option>
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+      </select>
+      <input type = "number" id = "secondNum" placeholder = "Enter another number" value = "">
+      <button id = "submit" type = "submit" >Calculate!</button>
+    </form>
   </body>
 </html>
