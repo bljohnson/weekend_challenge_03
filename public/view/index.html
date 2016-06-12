@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>Weekend Challenge 3</title>
-    <script src="../vendors/jquery-1.12.3.js" charset="utf-8"></script>
-    <script src="../../client.js" charset="utf-8"></script>
+    <script src = "../vendors/jquery-1.12.3.js" charset="utf-8"></script>
+    <script src = "../scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../vendors/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
     <h1>Calculator</h1>
-    <form action = "http://localhost:3000/getPost" method = "post">
-      <input type = "number" id = "firstNum"  placeholder = "Enter a number" value = "">
+    <form action = "http://localhost:3000/pathPost" method = "post">
+      <input type = "number" id = "firstNum" placeholder = "Enter a number" value = "">
       <select class = "math">
         <option>Select...</option>
         <option>+</option>
@@ -17,8 +18,8 @@
         <option>*</option>
         <option>/</option>
       </select>
-      <input type = "number" id = "secondNum" placeholder = "Enter another number" value = "">
-      <button id = "submit" type = "submit" >Calculate!</button>
+      <input type = "number" id = "secondNum" placeholder = "Enter a number" value = "">
+      <button id = "submit" type = "submit">Calculate!</button>
     </form>
   </body>
 </html>
