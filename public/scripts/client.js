@@ -83,7 +83,7 @@ $(document).ready(function() {
   console.log("hello from jquery");
 
   $('#submit').on('click', function(event) {
-    // $(event.preventDefault);
+    event.preventDefault();
 
     // console.log('button clicked');
     startServerSideOperation();
@@ -123,9 +123,8 @@ function startServerSideOperation() {
    url: "http://localhost:3000/pathPost",
    type: "POST",
    data: inputObject,
-   dataType: 'text',
-   success: function(){
-          console.log('post successful');
+   success: function(data){
+          console.log(data);
   //         // if post is successful we've received back "data"
   //         // send "data" to processResponse to do something with it
   //

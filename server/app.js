@@ -23,7 +23,8 @@ app.get('/index', function (req, res) {
 // app.use(bodyParser.urlencoded());
 
 app.post('/pathPost', urlencodedParser, function(req,res) {
-  console.log('in serverside: ' + req.body.input1, req.body.input2, req.body.doThis);
-  res.write('Ta da...' + calculateStuff(req.body.input1, req.body.input2, req.body.doThis));
+  var uno = Number(req.body.input1);
+  var dos = Number(req.body.input2);
+  res.write('Answer: ' + calculateStuff(uno, dos, req.body.doThis));
   res.end();
 }); // end of /pathPost app.post
