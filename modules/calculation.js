@@ -14,7 +14,7 @@ var doMath = function (value1, value2, mathOp) {
   }
 };
 
-// doMath();
+doMath();
 
 module.exports = doMath;
 

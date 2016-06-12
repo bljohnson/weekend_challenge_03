@@ -82,14 +82,16 @@ $(document).ready(function() {
 
   console.log("hello from jquery");
 
-  $('#submit').click(function() {
+  $('#submit').on('click', function(event) {
+    // $(event.preventDefault);
+
     // console.log('button clicked');
     startServerSideOperation();
   }); // end click function
 }); // end doc ready function
 
 
-//
+
 // var processResponse = function(response) {
 //   console.log('in processResponse: ' + response);
 //   // new p tag
@@ -121,6 +123,7 @@ function startServerSideOperation() {
    url: "http://localhost:3000/pathPost",
    type: "POST",
    data: inputObject,
+   dataType: 'text',
    success: function(){
           console.log('post successful');
   //         // if post is successful we've received back "data"
