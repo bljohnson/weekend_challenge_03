@@ -82,11 +82,25 @@ $(document).ready(function() {
 
   console.log("hello from jquery");
 
-  $('form').on('submit', function() {
+  $('#submit').click(function() {
+    // console.log('button clicked');
     startServerSideOperation();
-  });
-
+  }); // end click function
 }); // end doc ready function
+
+
+//
+// var processResponse = function(response) {
+//   console.log('in processResponse: ' + response);
+//   // new p tag
+//   var newParagraph = document.createElement('p');
+//   // with our output data
+//   newParagraph.textContent = response;
+//   // empty our output div
+//   document.getElementById('outputDiv').innerHTML='';
+//   // append newParagraph to output
+//   document.getElementById('outputDiv').appendChild(newParagraph);
+// };
 
 
 function startServerSideOperation() {
@@ -95,29 +109,29 @@ function startServerSideOperation() {
   var firstNumber = $('#firstNum').val();
   var secondNumber = $('#secondNum').val();
   var mathOperation = $('.math option:selected').text();
-  // console.log( 'firstNumber: ' + firstNumber + ' secondNumber: ' + secondNumber + ' mathOperation: ' + mathOperation);
-  var inputObject ={
-    "firstNumber": firstNumber,
-    "secondNumber": secondNumber,
-    "mathOperation": mathOperation
-  }; // end object
-  console.log( inputObject );
-  // post with ajax;
+
+  var inputObject = {
+    "input1": firstNumber,
+    "input2": secondNumber,
+    "doThis": mathOperation
+  }; // end inputObject
+
+  // post to server with ajax;
   $.ajax({
+   url: "http://localhost:3000/pathPost",
    type: "POST",
    data: inputObject,
-   url: "http://localhost:3000/pathPost",
-   success: function(data){
-          console.log( 'post successful: ' + data );
-          // if post is successful we've received back "data"
-          // send "data" to processResponse to do something with it
-
-          // processResponse( data );
+   success: function(){
+          console.log('post successful');
+  //         // if post is successful we've received back "data"
+  //         // send "data" to processResponse to do something with it
+  //
+          // processResponse(data);
     },
     statusCode: {
       404: function(){
-        alert( 'error connecting to server' );
+        alert('error connecting to server');
       } // end 404
     } // end statusCode
   }); // end AJAX request
-} // end function
+} // end startServerSideOperation function

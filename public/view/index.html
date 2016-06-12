@@ -10,16 +10,17 @@
   <body>
     <h1>Calculator</h1>
     <form action = "http://localhost:3000/pathPost" method = "post">
-      <input type = "number" id = "firstNum" placeholder = "Enter a number" value = "">
-      <select class = "math">
+      <input type = "number" id = "firstNum" name = "firstNum" placeholder = "Enter a number" value = "">
+      <select class = "math" name ="math">
         <option>Select...</option>
-        <option>+</option>
-        <option>-</option>
-        <option>*</option>
-        <option>/</option>
+        <option value = "+">+</option>
+        <option value = "-">-</option>
+        <option value = "*">*</option>
+        <option value = "/">/</option>
       </select>
-      <input type = "number" id = "secondNum" placeholder = "Enter a number" value = "">
+      <input type = "number" id = "secondNum" name = "secondNum" placeholder = "Enter a number" value = "">
       <button id = "submit" type = "submit">Calculate!</button>
     </form>
+    <div id = "ouputDiv"></div>
   </body>
 </html>
