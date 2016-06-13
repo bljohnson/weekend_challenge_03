@@ -84,7 +84,7 @@ function startServerSideOperation () {
 
   // post to server with ajax;
   $.ajax({
-   url: "http://localhost:3000/pathPost",
+   url: "/pathPost",
    type: "POST",
    data: inputObject,
    success: function(data){
