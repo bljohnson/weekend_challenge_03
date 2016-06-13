@@ -12,9 +12,9 @@ var server = app.listen(process.env.PORT||3000, function() {
 
 app.use(express.static('public')); // allow use of static files in public folder
 
-app.get('/index', function (req, res) {
+app.get('/', function (req, res) {
   res.sendFile(path.resolve('public/view/index.html'));
-}); // end of /index app.get
+}); // end of / app.get
 
 app.post('/pathPost', urlencodedParser, function(req,res) {
   var uno = Number(req.body.input1);
