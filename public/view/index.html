@@ -6,11 +6,20 @@
     <script src = "../vendors/jquery-1.12.3.js" charset="utf-8"></script>
     <script src = "../scripts/client.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../vendors/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
     <h1>Calculator</h1>
+    <div class = "container">
     <form id = "daForm" action = "/pathPost" method = "post">
       <input type = "number" id = "firstNum" name = "firstNum" placeholder = "Enter a number" value = "">
+
+      <!-- for PRO MODE USE -->
+      <!-- <button id = "addItUp">+</button>
+      <button id = "subtractIt">-</button>
+      <button id = "multiplyIt">x</button>
+      <button id = "divideIt">÷</button> -->
+
       <select id = "something" class = "math" name ="math">
         <option selected = "selected">Select...</option>
         <option value = "+">+</option>
@@ -19,9 +28,9 @@
         <option value = "/">/</option>
       </select>
       <input type = "number" id = "secondNum" name = "secondNum" placeholder = "Enter a number" value = "">
-      <button id = "submit" type = "submit">Calculate!</button>
-    </form><br>
-    <div id = "outputDiv"></div><br>
-    <button id = "clear">Start Over!</button>
+      <button class = "btn btn-primary" id = "submit" type = "submit">=</button>
+    </form></div><br>
+    <div id = "outputDiv" class = "container"></div><br>
+    <button class = "btn btn-primary" id = "clear">Start Over!</button>
   </body>
 </html>
