@@ -3,7 +3,7 @@
 // The logic for the calculator needs to be housed on the Server, where the client side will take in the values
 // (in 2 input text fields) and the type of mathematical operation (selected using a button on the DOM).
 // Each of the numerical values and type of mathematical operation will be bundled up in an object and then
-// sent to the server via a POST. So when the object leaves the server, it should look something like this:
+// sent to the server via a POST. So when the object is sent, it should look something like this:
 // { x: 3, y: 4, type: Add }
 //
 // Once the server receives it, build out logic to compute the numbers in 1 of 4 different ways.
@@ -40,43 +40,6 @@
 // });
 
 
-// $(document).ready(function() {
-//
-//   console.log("hello from jquery");
-//
-//   var first = $('#firstNum').val();
-//   var second = $('#secondNum').val();
-//   var ops = $('.math option:selected').text();
-//
-//   $('form').on('submit', function(event) {
-//     // event.preventDefault();
-//
-//         $.ajax({
-//                url: 'http://localhost:3000/pathPost',
-//                type: 'POST',
-//               //  data: $('form').serialize(),
-//                data: { "firstNumber": first,
-//                       "secondNumber": second,
-//                       "mathOperation": ops },
-//               //  contentType: 'application/json',
-//               //  dataType: 'json',
-//
-//                success: function(response){
-//                   console.log("Successful AJAX request!");
-//                   // console.log(first + second + ops);
-//
-//                   // $('body').text(response);
-//                 }, // end success function
-//                statusCode: {
-//                   404: function(){
-//                      alert( 'error connecting to server' );
-//                   } // end 404
-//                  } // end statusCode
-//                }); // end AJAX request
-//   }); // end click function
-// }); // end doc ready function
-
-
 
 $(document).ready(function() {
 
@@ -84,28 +47,29 @@ $(document).ready(function() {
 
   $('#submit').on('click', function(event) {
     event.preventDefault();
-
-    // console.log('button clicked');
     startServerSideOperation();
-  }); // end click function
+  }); // end submit button function
+
+  $('#clear').on('click', function(event) {
+    event.preventDefault();
+    $('#firstNum').val(''); // clears first input field
+    $('#secondNum').val(''); // clears second input field
+    $('.math').prop('selectedIndex', 0); // resets select dropdown menu to "Select..."
+    $('#outputDiv').empty(); // clear div containing answer
+  }); // end clear button function
+
 }); // end doc ready function
 
 
+var processResponse = function (response) {
+  console.log('in processResponse: ' + response);
 
-// var processResponse = function(response) {
-//   console.log('in processResponse: ' + response);
-//   // new p tag
-//   var newParagraph = document.createElement('p');
-//   // with our output data
-//   newParagraph.textContent = response;
-//   // empty our output div
-//   document.getElementById('outputDiv').innerHTML='';
-//   // append newParagraph to output
-//   document.getElementById('outputDiv').appendChild(newParagraph);
-// };
+  $('#outputDiv').text(response); // display answer on DOM in empty div
+}; // end processResponse function
 
 
-function startServerSideOperation() {
+// create object from form input and send request to server
+function startServerSideOperation () {
   // console.log( 'in startServerSideOperation' );
   // assemble object from input
   var firstNumber = $('#firstNum').val();
@@ -127,8 +91,7 @@ function startServerSideOperation() {
           console.log(data);
   //         // if post is successful we've received back "data"
   //         // send "data" to processResponse to do something with it
-  //
-          // processResponse(data);
+          processResponse(data);
     },
     statusCode: {
       404: function(){

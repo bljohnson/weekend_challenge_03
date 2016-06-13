@@ -16,12 +16,6 @@ app.get('/index', function (req, res) {
   res.sendFile(path.resolve('public/view/index.html'));
 }); // end of /index app.get
 
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-// app.use(express.bodyParser());
-
-// app.use(bodyParser.urlencoded());
-
 app.post('/pathPost', urlencodedParser, function(req,res) {
   var uno = Number(req.body.input1);
   var dos = Number(req.body.input2);
