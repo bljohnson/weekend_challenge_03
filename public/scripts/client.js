@@ -1,46 +1,79 @@
 var doThis = '+'; // set doThis as global variable, set to 'add' to set a default operation in case user forgets to choose one
 
+
 $(document).ready(function() {
 
   console.log("hello from jquery");
-
-  // testing operation Buttons
-  $('#addItUp').on('click', function(){
-    doThis = '+';
-  });
-  $('#subtractIt').on('click', function(){
-    doThis = '-';
-  });
-  $('#multiplyIt').on('click', function(){
-    doThis = '*';
-  });
-  $('#divideIt').on('click', function(){
-    doThis = '/';
-  });
-  // end testing buttons
 
   $('#submit').on('click', function(event) {
     event.preventDefault();
     startServerSideOperation();
   }); // end submit button function
 
+
   $('#clear').on('click', function(event) { // yay this works with the new operation buttons!!
     event.preventDefault();
-    $('#firstNum').val(''); // clears first input field
-    $('#secondNum').val(''); // clears second input field
+    // $('#firstNum').val(''); // clears first input field
+    // $('#secondNum').val(''); // clears second input field
     // $('.math').prop('selectedIndex', 0); // resets select dropdown menu to "Select..." which is the first index of the select menu
-    $('#outputDiv').empty(); // clear div containing answer
+    $('#screen').empty(); // clear div containing answer
   }); // end clear button function
 
 }); // end doc ready function
 
 
+
+
 // global functions/variables below
+
+function setFirstNumberString () {
+  $('.numbuttDiv').on('click', 'button', function () {
+    // console.log('it lives');
+    // console.log($(this).attr('value')); // log out value of clicked number button (0-9)
+    $('#screen').append($(this).attr('value')); // appends value of clicked number button to empty p tag
+    // console.log($('#screen').html()); // logs out contents of p tag
+    // var firstNumString = $('#screen').html();
+    return $('#screen').html();
+  });
+} // end setFirstNumberString
+
+// testing operation Buttons
+function operationButtons () {
+$('#addItUp').on('click', function(){
+  doThis = '+';
+  $('#screen').empty();
+});
+$('#subtractIt').on('click', function(){
+  doThis = '-';
+  $('#screen').empty();
+});
+$('#multiplyIt').on('click', function(){
+  doThis = '*';
+  $('#screen').empty();
+});
+$('#divideIt').on('click', function(){
+  doThis = '/';
+  $('#screen').empty();
+});
+}  // end operationButtons function
+
+
+function setSecondNumberString () {
+  $('.numbuttDiv').on('click', 'button', function () {
+    // console.log('it lives');
+    // console.log($(this).attr('value')); // log out value of clicked number button (0-9)
+    $('#screen').append($(this).attr('value')); // appends value of clicked number button to empty p tag
+    // console.log($('#screen').html()); // logs out contents of p tag
+    // var numString = $('#screen').html();
+    $('#screen').html();
+  });
+} // end setSecondNumberString function
+
 
 var processResponse = function (response) {
   console.log('in processResponse: ' + response);
 
-  $('#outputDiv').text(response); // display answer on DOM in empty div
+  $('#screen').text(response); // display answer on DOM in
 }; // end processResponse function
 
 
@@ -48,13 +81,14 @@ var processResponse = function (response) {
 function startServerSideOperation () { // this is a lot of stuff - best to extract into a function and call the function where you want all this to happen
   // console.log( 'in startServerSideOperation' );
   // assemble object from input. don't have to set as new vars, can put the stuff after the = in inputObject, but looks cleaner to do it this way
-  var firstNumber = $('#firstNum').val();
-  var secondNumber = $('#secondNum').val();
+
+  var firstNumString = setFirstNumberString();
+  var secondNumString = setSecondNumberString();
   var mathOperation = doThis;
 
   var inputObject = {
-    "input1": firstNumber,
-    "input2": secondNumber,
+    "input1": firstNumString,
+    "input2": secondNumString,
     "oper": mathOperation
   }; // end inputObject
 
