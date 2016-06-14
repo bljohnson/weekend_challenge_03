@@ -5,7 +5,9 @@ $(document).ready(function() {
 
   console.log("hello from jquery");
 
-  $('#submit').on('click', function(event) {
+  setFirstNumberString();
+
+  $('#equals').on('click', function(event) {
     event.preventDefault();
     startServerSideOperation();
   }); // end submit button function
@@ -16,7 +18,7 @@ $(document).ready(function() {
     // $('#firstNum').val(''); // clears first input field
     // $('#secondNum').val(''); // clears second input field
     // $('.math').prop('selectedIndex', 0); // resets select dropdown menu to "Select..." which is the first index of the select menu
-    $('#screen').empty(); // clear div containing answer
+    $('#total').empty(); // clear div containing answer
   }); // end clear button function
 
 }); // end doc ready function
@@ -27,13 +29,14 @@ $(document).ready(function() {
 // global functions/variables below
 
 function setFirstNumberString () {
-  $('.numbuttDiv').on('click', 'button', function () {
+  $('.numbers').on('click', 'button', function () {
     // console.log('it lives');
-    // console.log($(this).attr('value')); // log out value of clicked number button (0-9)
-    $('#screen').append($(this).attr('value')); // appends value of clicked number button to empty p tag
+    console.log($(this).attr('value')); // log out value of clicked number button (0-9)
+    $('#total').append($(this).attr('value')); // appends value of clicked number button to empty p tag
     // console.log($('#screen').html()); // logs out contents of p tag
     // var firstNumString = $('#screen').html();
-    return $('#screen').html();
+    var numberFirst = $('#total').text();
+    // console.log(numberFirst);
   });
 } // end setFirstNumberString
 
@@ -41,31 +44,32 @@ function setFirstNumberString () {
 function operationButtons () {
 $('#addItUp').on('click', function(){
   doThis = '+';
-  $('#screen').empty();
+  $('#total').empty();
 });
 $('#subtractIt').on('click', function(){
   doThis = '-';
-  $('#screen').empty();
+  $('#total').empty();
 });
 $('#multiplyIt').on('click', function(){
   doThis = '*';
-  $('#screen').empty();
+  $('#total').empty();
 });
 $('#divideIt').on('click', function(){
   doThis = '/';
-  $('#screen').empty();
+  $('#total').empty();
 });
 }  // end operationButtons function
 
 
 function setSecondNumberString () {
-  $('.numbuttDiv').on('click', 'button', function () {
+  $('.numbers').on('click', 'button', function () {
     // console.log('it lives');
     // console.log($(this).attr('value')); // log out value of clicked number button (0-9)
-    $('#screen').append($(this).attr('value')); // appends value of clicked number button to empty p tag
+    $('#total').append($(this).attr('value')); // appends value of clicked number button to empty p tag
     // console.log($('#screen').html()); // logs out contents of p tag
     // var numString = $('#screen').html();
-    $('#screen').html();
+    var numberSecond = $('#total').html();
+    return numberSecond;
   });
 } // end setSecondNumberString function
 
@@ -73,7 +77,7 @@ function setSecondNumberString () {
 var processResponse = function (response) {
   console.log('in processResponse: ' + response);
 
-  $('#screen').text(response); // display answer on DOM in
+  $('#total').text(response); // display answer on DOM in
 }; // end processResponse function
 
 

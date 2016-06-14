@@ -23,25 +23,25 @@ button:hover, .numbutt:hover, .btn-primary:hover {
 
 
 
-/*body, div, button {
+body, div, button {
     padding:0;
     margin:0;
     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 #calculator {
-    width: 70%;
-    height: 60%;
+    width: 330px;
+    height: 460px;
     margin: 10px auto;
     padding: 5px;
-    background-color: black;
+    background-color: rgb(232,129,129);
     border: 3px solid black;
     border-radius: 10px;
 }
 
 #total {
     height: 70px;
-    width: 300px;
+    width: 315px;
     margin: 0;
     margin-bottom: 5px;
     padding: 0 5px;
@@ -56,15 +56,15 @@ button:hover, .numbutt:hover, .btn-primary:hover {
 
 #operators button {
     display: block;
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 55px;
     float: left;
     padding: 2px;
     margin: 5px 6px;
     text-align: center;
     text-decoration: none;
     color: black;
-    font-size: 39px;
+    font-size: 42px;
     background: -webkit-gradient(linear, left top, left bottom, from(#EDEDED), to(#DCDCDC));
     background: -moz-linear-gradient(top, #EDEDED, #DCDCDC);
     border-radius: 10px;
@@ -72,8 +72,8 @@ button:hover, .numbutt:hover, .btn-primary:hover {
 
 #numbers button {
     display: block;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 65px;
     float: left;
     font-size: 43px;
     padding: 10px;
@@ -81,7 +81,13 @@ button:hover, .numbutt:hover, .btn-primary:hover {
     text-align: center;
     text-decoration: none;
     color: black;
-     background: -webkit-gradient(linear, left top, left bottom, from(#EDEDED), to(#DCDCDC));
+    background: -webkit-gradient(linear, left top, left bottom, from(#EDEDED), to(#DCDCDC));
     background: -moz-linear-gradient(top, #EDEDED, #DCDCDC);
     border-radius: 10px;
-}*/
+}
+
+button:hover{
+    background: -webkit-gradient(linear, left top, left bottom, from(#DCDCDC), to(#EDEDED));
+    background: -moz-linear-gradient(top,  #DCDCDC,  #EDEDED);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DCDCDC', endColorstr='#EDEDED');
+}
