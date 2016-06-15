@@ -4,7 +4,6 @@ var numberString = '';
 var newNumberString = '';
 // var totalDiv = $('#total');
 var totalDivString = '';
-var newString;
 
 
 $(document).ready(function() {
@@ -29,20 +28,20 @@ $(document).ready(function() {
 
 // global functions
 
-function setNumberString () {
+function setNumberString () { // what happens when click a number button
   $('#numbers').on('click', 'button', function () {
     $('#total').append($(this).attr('value')); // appends value of clicked number button to total div
-    numberString = $('#total').text();
+    numberString = $('#total').text(); // sets contents of total div as the first input
   });
 } // end setFirstNumberString
 
 function setUpForNextNumber (){
-  newNumberString = numberString;
-  numberString = '';
-  $('#total').empty();
+  newNumberString = numberString; // transfer first input value to new variable
+  numberString = ''; // empty so it can be used to store second input
+  $('#total').empty(); // empty the total div so it can display next input
 } // end setUpForNextNumber function
 
-function operationButtons () {
+function operationButtons () { // what happens when click on operation buttons
 $('#addItUp').on('click', function(){
   doThis = '+';
   setUpForNextNumber();
@@ -61,7 +60,7 @@ $('#divideIt').on('click', function(){
 });
 } // end operationButtons function
 
-function displayString () {
+function displayString () { // final result displayed in total div, cut off at 9 characters
   totalDivString = totalDiv.toString();
   if (totalDivString.length > 9) {
     totalDivString = totalDivString.substring(0,9);
@@ -71,7 +70,7 @@ function displayString () {
   $('#total').text(newString);
 } // end displayString function
 
-function crunchTheNumbers () {
+function crunchTheNumbers () { // when user clicks = button, this function does given math operation
   if (doThis == "+") {
     totalDiv = Number.parseFloat(newNumberString) + Number.parseFloat(numberString);
     displayString();
